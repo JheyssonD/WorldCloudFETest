@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
-
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { Character } from 'src/app/commons/models/character/character';
 

@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 import { AppRoutingModule } from './app.routing';
+import { HeaderModule } from './commons/components/header/header.module';
+import { SidenavListModule } from './commons/components/sidenav-list/sidenav-list.module';
 
 @NgModule({
 	declarations: [
@@ -24,6 +26,8 @@ import { AppRoutingModule } from './app.routing';
 		AppRoutingModule,
 
 		DashboardModule,
+		HeaderModule,
+		SidenavListModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

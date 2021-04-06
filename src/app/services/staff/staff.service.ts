@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Character } from 'src/app/commons/models/character/character';
+
+import { Staff } from 'src/app/commons/models/staff/staff';
 
 @Injectable()
 export class StaffService {
@@ -11,14 +13,14 @@ export class StaffService {
   ) { }
 
   /**
-   * Gets a List object type Character corresponding to the received house.
+   * Gets a List object type Staff corresponding to the received house.
    * @method get
    * @returns {Observable<Object>}
    */
   get(): Observable<object> {
-    return this.http.get<Character[]>(`http://hp-api.herokuapp.com/api/characters/staff`)
+    return this.http.get<Staff[]>(`http://hp-api.herokuapp.com/api/characters/staff`)
       .pipe(
-        catchError(this.handleError<Character[]>('get Staff', []))
+        catchError(this.handleError<Staff[]>('get Staff', []))
       );;
   }
 

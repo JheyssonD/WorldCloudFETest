@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StaffService } from 'src/app/services/staff/staff.service';
+import { LoaderService } from 'src/app/services/loader';
 
-import { Character } from 'src/app/commons/models/character/character';
+import { Staff } from 'src/app/commons/models/staff/staff';
 
 import { SelectOption } from 'src/app/commons/components/select-input/select-option.interface';
 
@@ -20,14 +21,16 @@ const HOUSE_OPTIONS: { [key: string]: any } = {
 })
 export class StaffComponent implements OnInit {
   options: Array<SelectOption> = [];
-  staffs: Array<Character> = [];
+  staffs: Array<Staff> = [];
 
 	/**
 	 * @constructs StaffComponent
 	 * @param {StaffService} staffService
+	 * @param {LoaderService} loaderService
 	 */
   constructor(
-    public staffService: StaffService
+    public staffService: StaffService,
+    public loaderService: LoaderService
     ) {
     for (let key in HOUSE_OPTIONS) {
       this.options.push({ text: key, value: HOUSE_OPTIONS[key] });
@@ -43,14 +46,27 @@ export class StaffComponent implements OnInit {
    * @returns {void}
    */
   getStaffs(): void {
+    this.loaderService.loading();
     this.staffService.get().subscribe(
       (response: any) => {
+        this.loaderService.loaded();
         console.log(response);
         this.staffs = response;
       },
       (error: any) => {
+        this.loaderService.loaded();
         console.log(error);
       }
     );
+  }
+
+  /**
+   * @method isLoading
+   * @returns {boolean}
+   */
+  isLoading(): boolean {
+    console.log(this.loaderService.isLoading());
+
+    return this.loaderService.isLoading();
   }
 }

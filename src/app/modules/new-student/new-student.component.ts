@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
+import * as moment from 'moment';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 
 import { StudentService } from 'src/app/services/student/student.service';
 
-import { Character } from 'src/app/commons/models/character/character';
+import { Student } from 'src/app/commons/models/student/student';
+import { MY_FORMATS } from 'src/app/commons/constants/my-formats';
 import { HOUSE_OPTIONS } from 'src/app/commons/constants/house-options';
 
 import { SelectOption } from 'src/app/commons/components/select-input/select-option.interface';
-import { Router } from '@angular/router';
-import * as moment from 'moment';
-import { MY_FORMATS } from 'src/app/commons/constants/my-formats';
 
 @Component({
 	selector: 'app-new-student',
@@ -27,7 +27,7 @@ import { MY_FORMATS } from 'src/app/commons/constants/my-formats';
 	],
 })
 export class NewStudentComponent implements OnInit {
-	student: Character = new Character;
+	student: Student = new Student;
 
 	options: Array<SelectOption> = [];
 
@@ -76,7 +76,7 @@ export class NewStudentComponent implements OnInit {
 		this.student.house = this.profileForm.value.house;
 		console.log(this.student);
 		
-		this.studentService.storeStudent(this.student);
+		this.studentService.storeRequestStudent(this.student);
 		this.router.navigate(['/detail-student']);
 	}
 }

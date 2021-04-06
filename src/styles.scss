@@ -4,6 +4,12 @@
 
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/utilities";
 
-html, body { height: 99%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~@angular/material/theming';
+
+html, body { height: 100%; }
+body {
+	margin: 0; 
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}

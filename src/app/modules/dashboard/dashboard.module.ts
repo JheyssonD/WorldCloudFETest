@@ -10,8 +10,8 @@ import { DashboardRoutes } from './dashboard.routing';
 import { CharacterService } from 'src/app/services/character/character.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TableCharacterModule } from 'src/app/commons/components/table-character/table-character.module';
-
-
+import { LoaderService } from 'src/app/services/loader';
+import { LoaderModule } from 'src/app/commons/components/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +23,13 @@ import { TableCharacterModule } from 'src/app/commons/components/table-character
 
     SelectInputModule,
     TableCharacterModule,
+    LoaderModule,
 
     RouterModule.forChild(DashboardRoutes)
   ],
 	providers: [
-    CharacterService
+    CharacterService,
+    LoaderService
   ],
 })
 export class DashboardModule { }

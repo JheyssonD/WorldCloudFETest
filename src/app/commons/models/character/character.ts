@@ -1,7 +1,8 @@
 import { Wand } from "../wand/wand";
 import * as moment from 'moment';
+import { IPerson } from "../iperson";
 
-export class Character {
+export class Character implements IPerson {
     "name": string;
     "species": string;
     "gender": string;
@@ -14,7 +15,7 @@ export class Character {
     "wand": Wand;
     "patronus": string;
     "hogwartsStudent": boolean;
-    "hogwartsStaff": false;
+    "hogwartsStaff": boolean;
     "actor": string;
     "alive": boolean;
     "image": string;

@@ -7,7 +7,7 @@ export class Age implements PipeTransform {
 
 	constructor() { }
 
-	transform(dateOfBirth: string, format: string = "dd-mm-yyy"): any {
+	transform(dateOfBirth: string, format: string = "dd-mm-yyyy"): any {
 		if (!moment(dateOfBirth).isValid()) {
 			return null;
 		}

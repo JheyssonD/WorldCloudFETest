@@ -23,7 +23,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RouterModule.forChild(NewStudentRoutes)
   ],
 	providers: [
-    StudentService
   ],
 })
 export class NewStudentModule { }

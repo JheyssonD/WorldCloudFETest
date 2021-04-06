@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { StudentService } from 'src/app/services/student/student.service';
 
-import { Character } from 'src/app/commons/models/character/character';
+import { Student } from 'src/app/commons/models/student/student';
 
 import { SelectOption } from 'src/app/commons/components/select-input/select-option.interface';
 
@@ -12,7 +12,7 @@ import { SelectOption } from 'src/app/commons/components/select-input/select-opt
 	styleUrls: ['./detail-student.component.scss']
 })
 export class DetailStudentComponent implements OnInit {
-	student: Character = new Character;
+	student: Student = new Student;
 
 	/**
 	 * @constructs DetailStudentComponent
@@ -36,7 +36,7 @@ export class DetailStudentComponent implements OnInit {
 	 * @returns {void}
 	 */
 	getStudent(): void {
-		this.student = this.studentService.getStudent();
+		this.student = this.studentService.getNewStudent();
 		console.log(this.student);
 	}
 }

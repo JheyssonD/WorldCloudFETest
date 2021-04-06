@@ -15,6 +15,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 /**
  * Module where the modules needed to be imported by other modules are exported.
@@ -37,6 +42,11 @@ import { MatButtonModule } from '@angular/material/button';
 		MatCardModule,
 		MatDatepickerModule,
 		MatButtonModule,
+		MatProgressSpinnerModule,
+		MatToolbarModule,
+		ScrollingModule,
+		MatIconModule,
+		FlexLayoutModule,
 	],
 	declarations: [],
 	providers: [
@@ -59,6 +69,11 @@ import { MatButtonModule } from '@angular/material/button';
 		MatCardModule,
 		MatDatepickerModule,
 		MatButtonModule,
+		MatProgressSpinnerModule,
+		MatToolbarModule,
+		ScrollingModule,
+		MatIconModule,
+		FlexLayoutModule,
 	]
 })
 export class SharedModule {}

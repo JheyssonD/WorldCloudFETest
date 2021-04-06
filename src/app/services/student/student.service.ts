@@ -1,58 +1,74 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Character } from 'src/app/commons/models/character/character';
 
-@Injectable()
+import { Student } from 'src/app/commons/models/student/student';
+
+@Injectable({
+  providedIn: 'root',
+})
 export class StudentService {
+  requestStudents: Array<Student> = [];
   constructor(
     private http: HttpClient
   ) { }
 
   /**
-   * Gets a List object type Character corresponding to the received house.
+   * Gets a List object type Student corresponding to the received house.
    * @method get
    * @returns {Observable<Object>}
    */
   get(): Observable<object> {
-    return this.http.get<Character[]>(`http://hp-api.herokuapp.com/api/characters/students`)
+    return this.http.get<Student[]>(`http://hp-api.herokuapp.com/api/characters/students`)
       .pipe(
-        catchError(this.handleError<Character[]>('get Student', []))
-      );;
+        catchError(this.handleError<Student[]>('get Student', []))
+      );
+  }
+
+  /**
+   * Gets a List object type Student corresponding to the received house.
+   * @method getRequestStudents
+   * @returns {Observable<Object>}
+   */
+  getRequestStudents(): Observable<object> {
+    return this.http.get<Student[]>(`http://hp-api.herokuapp.com/api/characters/students`)
+      .pipe(
+        catchError(this.handleError<Student[]>('get Student', []))
+      );
   }
 
   /**
    * Stores new student
-   * @method storeStudent
-   * @param {Character} student
+   * @method storeRequestStudent
+   * @param {Student} student
    * @returns {void}
    */
-  storeStudent(student: Character): void {
-    console.log(student, JSON.stringify(student));
+  storeRequestStudent(student: Student): void {
+    this.requestStudents.push(student);
     localStorage.setItem('stored_student', JSON.stringify(student));
-    console.log(this.getStudent());
-    
   }
 
   /**
    * Retrieve Stored student
-   * @method getStudent
-   * @param {Character} student
-   * @returns {Character}
+   * @method getNewStudent
+   * @param {Student} student
+   * @returns {Student}
    */
-  getStudent(): Character {
+  getNewStudent(): Student {
     let retrievedStudent = localStorage.getItem('stored_student');
-
-    console.log(retrievedStudent);
-    let student: Character = JSON.parse(retrievedStudent || '{}');
-    console.log(student);
-    // if (Object.keys(student).length > 0) {
-    //   student.dateOfBirth = moment.utc(student.dateOfBirth);
-    // }
-
+    let student: Student = JSON.parse(retrievedStudent || '{}');
     return student;
+  }
+
+  /**
+   * Retrieve All Requests Students
+   * @method getRequest
+   * @returns {Array<Student>}
+   */
+  getRequest(): Array<Student> {
+    return this.requestStudents;
   }
 
   /**

@@ -1,14 +1,14 @@
-.container{
+.container-fluid{
 	width: 100%;
 	height: 100%;
 	padding: 20px 0px;
 }
 
 ::ng-deep .mat-card-header{
-	background-color:blue !important;
+	background-color: #3f51b5 !important;
 	padding:5px !important;
-	color: wheat;
+	color: white;
 	& * {
-		color: wheat;
+		color: white;
 	}
 }
